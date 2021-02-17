@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\ColectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +17,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  
+
+
+return view ('ajaxRequest');
 });
+
+Route::get('/crearColeccion', function () {
+  
+
+
+return view ('colecciones');
+});
+Route::get('/login', function () {
+  
+
+
+return view ('login');
+});
+Route::post('/crearColeccion',[ColectionController::class,"crearColecion"])->name('crearColeccion');
+
+
+ //Route::get('ajaxRequest', 'AjaxController@ajaxRequest');
+//Route::post('ajaxRequest', 'AjaxController@ajaxRequestPost')->name('postAjax');
+//Route::post('/postAjax',[AjaxController::class,"ajaxRequestPost"])->name('postAjax');
+Route::post('/register',[UsuarioController::class,"register"])->name('register');
+Route::post('/login',[UsuarioController::class,"login"])->name('login');
+
+

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Users extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +14,16 @@ class Users extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->string('usuario');
+            $table->id();
+            $table->string('nombre')->unique();
             $table->string('email')->unique();
-            $table->string('contrasena');
-            $table->enum('rol',['particular', 'profesional', 'administrador']);
-            $table->string('user_token');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->enum('rol',['particular', 'profesional'])->nullable();
+            $table->enum('rol_admin',['administrador'])->nullable();
+            $table->string('api_token')->nullable();
+            $table->rememberToken();
             $table->timestamps();
-
-            $table->primary('usuario');
         });
     }
 
