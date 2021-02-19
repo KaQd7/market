@@ -24,7 +24,7 @@ class CreateVentasTable extends Migration
    
     public function down()
     {
-        $table->dropForeignId(['cards_id']);
+        $table->dropForeign(['cards_id']);
         $table->dropColumn('cards_id');
         
         Schema::dropIfExists('ventas');

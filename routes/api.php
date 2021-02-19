@@ -20,7 +20,7 @@ use App\Http\Controllers\VentaController;
 Route::prefix('cards')->group(function () {
 	Route::post('/crearCarta',[CardController::class,"crearCarta"])->middleware('guest');
 	
-	
+
 });
 Route::prefix('colections')->group(function () {
 	Route::post('/crearColecion',[ColectionController::class,"crearColecion"])->middleware('guest');
