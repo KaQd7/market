@@ -44,6 +44,14 @@ Route::get('/crearAdmin', function () {
 return view ('admin');
 });
 
+Route::get('/ventas', function () {
+return view ('listaVentas');
+});
+
+Route::get('/compras', function () {
+return view ('listaCompra');
+});
+
 
 Route::post('/crearColeccion',[ColectionController::class,"crearColecion"])->name('crearColeccion');
 
@@ -57,3 +65,6 @@ Route::post('/crearCarta',[CardController::class,"crearCarta"])->name('crearCart
 
 
 Route::post('/createventa',[VentaController::class,"createventa"])->name('createventa');
+
+Route::post('/listaventas',[VentaController::class,"listaventas"])->name('listaventas');
+Route::post('/listaCompra',[VentaController::class,"listaCompra"])->name('listaCompra');
