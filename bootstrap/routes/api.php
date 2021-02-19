@@ -20,7 +20,7 @@ use App\Http\Controllers\VentaController;
 Route::prefix('cards')->group(function () {
 	Route::post('/crearCarta',[CardController::class,"crearCarta"])->middleware('guest');
 	
-	
+
 });
 Route::prefix('colections')->group(function () {
 	Route::post('/crearColecion',[ColectionController::class,"crearColecion"])->middleware('guest');
@@ -30,9 +30,9 @@ Route::prefix('colections')->group(function () {
 Route::prefix('venta')->group(function (){
 	
     
-    Route::post('/listaventas',[VentaController::class,"listaventas"])->middleware('auth');
+    Route::get('/listaventas/{nombre_venta}',[VentaController::class,"listaventas"])->middleware('auth');
     Route::post('/createventa',[VentaController::class,"createventa"])->middleware('auth');
-    Route::post('/listaCompra/',[VentaController::class,"listaCompra"])->middleware('auth');
+    Route::get('/listaCompra/{nombre_venta}',[VentaController::class,"listaCompra"])->middleware('auth');
 
 });
 

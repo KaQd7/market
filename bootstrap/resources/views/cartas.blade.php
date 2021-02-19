@@ -18,23 +18,32 @@
   
             <div class="form-group">
                 <label>Name:</label>
-                <input type="text" name="name" class="form-control" placeholder="Name" required="">
+                <input type="text" name="nombre" class="form-control" placeholder="Name" required="">
             </div>
   
             <div class="form-group">
-                <label>Password:</label>
-                <input type="password" name="password" class="form-control" placeholder="Password" required="">
+                <label>descripcion:</label>
+                <input type="text" name="descripcion" class="form-control" placeholder="descripcion" required="">
             </div>
    
             <div class="form-group">
-                <strong>Email:</strong>
-                <input type="email" name="email" class="form-control" placeholder="Email" required="">
+                <strong>Coleccion:</strong>
+                <input type="email" name="coleccion" class="form-control" placeholder="Email" required="">
+            </div>
+
+            <div class="form-group">
+                <strong>coleccion id:</strong>
+                <input type="text" name="colections_id" class="form-control" placeholder="Email" required="">
             </div>
             
    
             <div class="form-group">
                 <button class="btn btn-success btn-submit">Submit</button>
+                  <button onclick="location.href = 'http://localhost/cartas_magic/public/crearColeccion'">Crear Cartas</button>
+                  <button onclick="location.href = 'http://localhost/cartas_magic/public/crearAdmin'">Crear admistrador</button>
+                  <button onclick="location.href = 'http://localhost/cartas_magic/public/newPassword'">nueva contraseña</button>
             </div>
+
   
         </form>
     </div>
@@ -52,18 +61,19 @@
   
         e.preventDefault();
    
-        var name = $("input[name=name]").val();
-        var password = $("input[name=password]").val();
-        var email = $("input[name=email]").val();
+        var nombre = $("input[name=nombre]").val();
+        var descripcion = $("input[name=descripcion]").val();
+        var coleccion = $("input[name=coleccion]").val();
+        var colections_id = $("input[name=colections_id]").val();
 
-        var arr = {nombre:name, password:password, email:email, rol:"particular"}
+        var arr = {nombre:nombre, descripcion:descripcion, coleccion:coleccion, colections_id:colections_id}
    
         $.ajax({
            type:'POST',
-           url:"{{ route('register1') }}",
+           url:"{{ route('crearCarta') }}",
            data: JSON.stringify(arr),
            contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
+           dataType: 'json',
             async: false,
 
            //data:{name:name, password:password, email:email},
@@ -72,7 +82,7 @@
            }
         });
   
-	});
+    });
 </script>
    
 </html>

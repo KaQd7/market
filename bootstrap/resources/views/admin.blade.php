@@ -14,19 +14,24 @@
     <div class="container">
         <h1>Laravel 7 Ajax Request example</h1>
   
-        <form action="" id="formlg" >
-  
-           
+        <form >
   
             <div class="form-group">
-                <label>Password:</label>
-                <input type="password" name="password" class="form-control" placeholder="Password" required="">
+                <label>Nombre:</label>
+                <input type="text" name="nombre" class="form-control" placeholder="Name" required="">
+            </div>
+  
+            <div class="form-group">
+                <label>email:</label>
+                <input type="email" name="email" class="form-control" placeholder="email" required="">
             </div>
    
             <div class="form-group">
-                <strong>Email:</strong>
-                <input type="text" name="email" class="form-control" placeholder="Email" required="">
+                <strong>Contraseña:</strong>
+                <input type="password" name="password" class="form-control" placeholder="Password" required="">
             </div>
+
+           
             
    
             <div class="form-group">
@@ -45,62 +50,36 @@
         }
     });
    
-    $(document).on('submit','#formlg', function(event){
-        event.preventDefault();    
-    
+    $(".btn-submit").click(function(e){
+  
+        e.preventDefault();
    
-       
-        var password = $("input[name=password]").val();
+        var nombre = $("input[name=nombre]").val();
         var email = $("input[name=email]").val();
+        var password = $("input[name=password]").val();
+      
 
-        var arr = { password:password, email:email};
+        var arr = {nombre:nombre, email:email,password:password, rol_admin:"administrador"}
    
         $.ajax({
            type:'POST',
-           url:"{{ route('login') }}",
+           url:"{{ route('crearAdmin') }}",
            data: JSON.stringify(arr),
            contentType: 'application/json; charset=utf-8',
             dataType: 'json',
             async: false,
 
-          
+           //data:{name:name, password:password, email:email},
            success:function(data){
               alert(data.success);
-              //location.href = 'http://localhost/cartas_magic/public/crearColeccion';
-
-              if (data){
-
-                console.log(data)
-
-                if (data.permisos == "administrador"){
-
-                    location.href = 'http://localhost/proyectos/marketfinal/public/crearColeccion';
-
-                }else if (!data.permisos) {
-                    console.log(401);
-                    location.reload();
-                }
-                    //echo "No tienes permisos";
-
-            }else{
-                $('.error').slideDown('slow');
-            }
-
            }
-
-        })
-
-
-        .fail(function(resp){
-            console.log(resp.responseText);
-        })
-
-        .always(function(){
-            console.log("complete");
-        })
-
+        });
   
-    });
+  });
+    var request = $.ajax({
+  method: "GET",
+  url: "http://...../"
+});
 </script>
    
 </html>

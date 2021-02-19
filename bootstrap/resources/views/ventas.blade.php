@@ -14,18 +14,26 @@
     <div class="container">
         <h1>Laravel 7 Ajax Request example</h1>
   
-        <form action="" id="formlg" >
+        <form >
   
-           
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" name="nombre_venta" class="form-control" placeholder="Name" required="">
+            </div>
   
             <div class="form-group">
                 <label>Password:</label>
-                <input type="password" name="password" class="form-control" placeholder="Password" required="">
+                <input type="password" name="cantidad" class="form-control" placeholder="Password" required="">
             </div>
    
             <div class="form-group">
                 <strong>Email:</strong>
-                <input type="text" name="email" class="form-control" placeholder="Email" required="">
+                <input type="email" name="precio" class="form-control" placeholder="Email" required="">
+            </div>
+
+            <div class="form-group">
+                <strong>Email:</strong>
+                <input type="text" name="cards_id" class="form-control" placeholder="Email" required="">
             </div>
             
    
@@ -45,62 +53,32 @@
         }
     });
    
-    $(document).on('submit','#formlg', function(event){
-        event.preventDefault();    
-    
+    $(".btn-submit").click(function(e){
+  
+        e.preventDefault();
    
-       
-        var password = $("input[name=password]").val();
-        var email = $("input[name=email]").val();
+        var nombre_venta = $("input[name=nombre_venta]").val();
+        var cantidad = $("input[name=cantidad]").val();
+        var precio = $("input[name=precio]").val();
+        var cards_id = $("input[name=cards_id]").val();
 
-        var arr = { password:password, email:email};
+        var arr = {nombre_venta:nombre_venta, cantidad:cantidad, precio:precio, cards_id:cards_id}
    
         $.ajax({
            type:'POST',
-           url:"{{ route('login') }}",
+           url:"{{ route('createventa') }}",
            data: JSON.stringify(arr),
            contentType: 'application/json; charset=utf-8',
             dataType: 'json',
             async: false,
 
-          
+           //data:{name:name, password:password, email:email},
            success:function(data){
               alert(data.success);
-              //location.href = 'http://localhost/cartas_magic/public/crearColeccion';
-
-              if (data){
-
-                console.log(data)
-
-                if (data.permisos == "administrador"){
-
-                    location.href = 'http://localhost/proyectos/marketfinal/public/crearColeccion';
-
-                }else if (!data.permisos) {
-                    console.log(401);
-                    location.reload();
-                }
-                    //echo "No tienes permisos";
-
-            }else{
-                $('.error').slideDown('slow');
-            }
-
            }
-
-        })
-
-
-        .fail(function(resp){
-            console.log(resp.responseText);
-        })
-
-        .always(function(){
-            console.log("complete");
-        })
-
+        });
   
-    });
+	});
 </script>
    
 </html>
