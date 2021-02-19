@@ -80,7 +80,7 @@ class UsuarioController extends Controller
 			
 							
 							'message' => 'bienvenido',
-							'permisos' => $user->rol_admin
+							'permisos' => $user->rol_admin . $user->rol
 						]);
 
 						
@@ -90,6 +90,41 @@ class UsuarioController extends Controller
 			}
 		}
 	}
+
+		public function newPassword(Request $request){
+
+        $respuesta = "";
+
+        $data = User::where('email',$request->email) -> first();
+
+        if ($data) {
+        	
+        	$newPassword = Str::random(10);
+	        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+
+	        $password = substr(str_shuffle($permitted_chars), 0, 10);
+
+	        $hashedPassword = Hash::make($password);
+
+	        try{
+	            $data->password = $hashedPassword;
+	            $data->save();
+	            $respuesta =  $newPassword;
+	        }catch(\Exception $e){
+	            $respuesta = $e->getMessage();
+	        }
+        }else{
+        	return response()->json([
+			
+							
+				'message' => 'El correo ' . $request->email . ' no exsiste'
+			]);
+        }
+
+
+
+        return response($respuesta);
+    }
 	
 
 	 

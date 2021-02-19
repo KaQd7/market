@@ -39,9 +39,9 @@
    
             <div class="form-group">
                 <button class="btn btn-success btn-submit">Submit</button>
-                  <button onclick="location.href = 'http://localhost/cartas_magic/public/crearColeccion'">Crear Cartas</button>
-                  <button onclick="location.href = 'http://localhost/cartas_magic/public/crearAdmin'">Crear admistrador</button>
-                  <button onclick="location.href = 'http://localhost/cartas_magic/public/newPassword'">nueva contraseña</button>
+                  <button onclick="location.href = 'http://localhost/proyectos/marketfinal/public/crearColeccion'">Crear Cartas</button>
+                  <button onclick="location.href = 'http://localhost/proyectos/marketfinal/public/crearAdmin'">Crear admistrador</button>
+                  <button onclick="location.href = 'http://localhost/proyectos/marketfinal/public/newPassword'">nueva contraseña</button>
             </div>
 
   

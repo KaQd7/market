@@ -74,11 +74,13 @@
 
                 if (data.permisos == "administrador"){
 
-                    location.href = 'http://localhost/proyectos/marketfinal/public/crearColeccion';
+                    location.href = 'http://localhost/proyectos/marketfinal/public/crearCarta';
 
+                }else if (data.permisos == "particular") {
+                    location.href = 'http://localhost/proyectos/marketfinal/public/createventa';
                 }else if (!data.permisos) {
                     console.log(401);
-                    location.reload();
+                    //location.reload();
                 }
                     //echo "No tienes permisos";
 

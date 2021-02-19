@@ -75,6 +75,7 @@
            //data:{name:name, password:password, email:email},
            success:function(data){
               alert(data.success);
+              console.log(data);
            }
         });
   

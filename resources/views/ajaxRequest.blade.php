@@ -60,7 +60,7 @@
    
         $.ajax({
            type:'POST',
-           url:"{{ route('register1') }}",
+           url:"{{ route('register') }}",
            data: JSON.stringify(arr),
            contentType: 'application/json; charset=utf-8',
             dataType: 'json',

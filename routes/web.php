@@ -9,7 +9,7 @@ use App\Http\Controllers\ColectionController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\VentaController;
 
-Route::get('/', function () {
+Route::get('/register', function () {
   
 return view ('ajaxRequest');
 });
